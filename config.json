@@ -1,5 +1,5 @@
 {
-  "process_count": 10,
+  "process_count": 30,
   "timeout_sec": 30,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36",
@@ -19,42 +19,28 @@
     { 
       "link": "https://katcr.co/category/tv/page/",
       "type": "tv",
-      "pages": 2,
+      "pages": 101,
       "source": "kat.ph",
       "multi_page": true
     },
     { 
       "link": "https://katcr.co/category/movies/page/",
       "type": "movies",
-      "pages": 2,
+      "pages": 101,
       "source": "kat.ph",
       "multi_page": true
     },
     { 
       "link": "https://katcr.co/category/games/page/",
       "type": "games",
-      "pages": 2,
+      "pages": 101,
       "source": "kat.ph",
       "multi_page": true
     },
     { 
       "link": "https://katcr.co/category/music/page/",
       "type": "music",
-      "pages": 2,
-      "source": "kat.ph",
-      "multi_page": true
-    },
-    { 
-      "link": "https://katcr.co/category/tv/page/",
-      "type": "tv",
-      "pages": 2,
-      "source": "kat.ph",
-      "multi_page": true
-    },
-    { 
-      "link": "https://katcr.co/category/tv/page/",
-      "type": "tv",
-      "pages": 2,
+      "pages": 101,
       "source": "kat.ph",
       "multi_page": true
     },

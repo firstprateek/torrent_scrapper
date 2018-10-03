@@ -5,7 +5,7 @@ A command line tool that scrapes magnet links, converts magnet links in to .torr
 ### This project is W.I.P.
 
 ## Requirements
-* python
+* python2.7
 * python-libtorrent (libtorrent-rasterbar version 0.16 or later)
 
 ## Install python-libtorrent on Ubuntu

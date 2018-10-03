@@ -1,2 +1,7 @@
+#magnet2torrent
+*.torrent
+*.pyc
+
+#scapper
 .DS_Store
 *.csv

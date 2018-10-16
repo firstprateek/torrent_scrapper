@@ -32,19 +32,25 @@ def convert_magnet_to_torrent(link_tag):
   timer = Timer(CONFIG['timeout_sec'], kill_and_set_flag, [proc, torrent_file_name])
   result = []
   try:
-    timer.start()
-    stdout, stderr = proc.communicate()
-    rawdata = open(torrent_file_name).read()
-    print("completed subprocess: %s" %(torrent_file_name))
-    result = bencode.bdecode(rawdata)
-  finally:
-    timer.cancel()
-    Popen(['rm', torrent_file_name], stdout=PIPE, stderr=PIPE)
-    if torrent_file_name in process_status and process_status[torrent_file_name] == 1:
-      del process_status[torrent_file_name]
-      return None
-    else:
-      return result
+    try:
+      timer.start()
+      stdout, stderr = proc.communicate()
+      rawdata = open(torrent_file_name).read()
+      print("completed subprocess: %s" %(torrent_file_name))
+      result = bencode.bdecode(rawdata)
+    finally:
+      timer.cancel()
+      Popen(['rm', torrent_file_name], stdout=PIPE, stderr=PIPE)
+      if torrent_file_name in process_status and process_status[torrent_file_name] == 1:
+        del process_status[torrent_file_name]
+        return None
+      else:
+        return result
+  except Exception as ex:
+    template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+    message = template.format(type(ex).__name__, ex.args)
+    print message
+    return None
 
 def scrape_page(url, csv_writer):
   global processes_completed
@@ -64,6 +70,7 @@ def scrape_page(url, csv_writer):
     chunk_result = [chunk for chunk in chunk_result if chunk != None]
 
     for idx, result in enumerate(chunk_result):
+      if not isinstance(result, dict): continue
       if 'info' not in result: result['info'] = {}
       csv_writer.writerow(
         [

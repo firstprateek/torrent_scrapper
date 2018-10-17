@@ -58,7 +58,7 @@ def magnet2torrent(magnet):
     peer_info_list = {}
     def update_ip_results(peer_list):
       for peer in peer_list:
-        if peer_info_list[peer.ip]:
+        if peer.ip in peer_info_list:
           peer_in_hash = peer_info_list[peer.ip]
           peer_in_hash['up_speed'] = max(peer_in_hash['up_speed'], peer.up_speed)
           peer_in_hash['down_speed'] = max(peer_in_hash['down_speed'], peer.down_speed)

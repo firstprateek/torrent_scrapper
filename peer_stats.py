@@ -55,8 +55,8 @@ def magnet2torrent(magnet):
 
     handle.set_upload_limit(0) #DO NOT UPLOAD ANYTHING
 
-    peer_info_list = []
-    def update_ip_results(results, peer_list):
+    peer_info_list = {}
+    def update_ip_results(peer_list):
       for peer in peer_list:
         if peer_info_list[peer.ip]:
           peer_in_hash = peer_info_list[peer.ip]
@@ -71,16 +71,16 @@ def magnet2torrent(magnet):
       counter += 1
 
       peer_list = handle.get_peer_info()
-      peer_info_list = update_ip_results(peer_info_list, peer_list)
+      peer_info_list = update_ip_results(peer_list)
       if len(peer_info_list) > 1: break
 
       sleep(5)
 
-    torrent_data['peer_info'] = [ 
+    torrent_data['peer_info'] = [
       { 
-        'ip': key, 
-        'down_speed': value['down_speed'], 
-        'up_speed': value['up_speed'] 
+        'ip': key,
+        'down_speed': value['down_speed'],
+        'up_speed': value['up_speed']
       } for key, value in peer_info_list.iteritems()
     ]
   except KeyboardInterrupt:

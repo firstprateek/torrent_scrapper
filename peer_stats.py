@@ -6,6 +6,7 @@ from time import sleep
 
 TORRENT_CREATE_TIMEOUT = 60 # seconds
 TORRENT_DONWLOAD_LOOPS = 12 #each loop is 5 sec
+NUMBER_OF_PEERS_INFO = 2 # Atleast one greater than this number
 
 def magnet2torrent(magnet):
   tempdir = tempfile.mkdtemp()
@@ -72,7 +73,7 @@ def magnet2torrent(magnet):
 
       peer_list = handle.get_peer_info()
       update_ip_results(peer_list)
-      if len(peer_info_list) > 1: break
+      if len(peer_info_list) > NUMBER_OF_PEERS_INFO: break
 
       sleep(5)
 

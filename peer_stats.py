@@ -71,7 +71,7 @@ def magnet2torrent(magnet):
       counter += 1
 
       peer_list = handle.get_peer_info()
-      peer_info_list = update_ip_results(peer_list)
+      update_ip_results(peer_list)
       if len(peer_info_list) > 1: break
 
       sleep(5)
